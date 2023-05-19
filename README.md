@@ -68,7 +68,7 @@ The tree below illustrates the organization of this project.
 ## 模型设计
 本比赛主要利用CLIP方法进行多模态对比学习训练, 整体的训练思路如下：
 <p align="center">
-<img src=".\.img/framework.png" height = "240" alt="" align=center />
+<img src="framework.png" height = "240" alt="" align=center />
 <br><br>
 <b>图1.整体思路</b>
 </p>
