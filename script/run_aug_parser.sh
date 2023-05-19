@@ -1,0 +1,2 @@
+python src/preprocess/parser/parse_augment.py --aug_file_path data/augmented_ViT-bigG-14_train_label.txt --save_file_path src/train/data/train_car_data.csv --separator \$ --mode train
+python src/preprocess/parser/parse_augment.py --aug_file_path data/augmented_ViT-bigG-14_val_label.txt --save_file_path src/train/data/val_car_data.csv --separator \$ --mode val

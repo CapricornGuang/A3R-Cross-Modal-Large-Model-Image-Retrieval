@@ -1,0 +1,2 @@
+python src/utils/merge_csv_file.py --csv_file1 src/train/data/train_car_data.csv --csv_file2 src/train/data/train_person_data.csv --csv_target src/train/data/train_data.csv
+python src/utils/merge_csv_file.py --csv_file1 src/train/data/val_car_data.csv --csv_file2 src/train/data/val_person_data.csv --csv_target src/train/data/val_data.csv
