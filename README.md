@@ -1,4 +1,4 @@
-# 跨膜态大模型图像检索比赛第6名解决方案
+# 跨模态大模型图像检索比赛第6名解决方案
 ![PyTorch 1.12.1](https://img.shields.io/badge/PyTorch-1.12.1-green?style=plastic)
 ![OpenClipTorch 2.17.1](https://img.shields.io/badge/OpenClipTorch-2.17.1-orange?style=plastic)
 ![CVPR 2023](https://img.shields.io/badge/CVPR-2023-red?style=plastic)
@@ -99,7 +99,6 @@ The tree below illustrates the organization of this project.
 ### 数据分布差异大
 1. 训练集与测试集车辆图像分布差异较大，导致测试集上的精度提升无异于测试集精度提升，使用小学习率 4e-7，只微调5个epoch
 2. 训练集是网络数据集，测试集是监控数据集，本质上是属于跨域问题，在Query的时候做了一个Prompt 增强，也即对于汽车的数据+"image taken by traffic surveillance cameras"。
-按照跨域来继续做这个任务是一个很有前途的方向，后面也可以讨论Prompt learning for 跨域。毕竟网络数据集远远多于监控数据集，能充分利用网络数据集信息有利于训练知识储量更大的下游模型
 
 # Acknowlegements
 感谢由Ilharco, Gabriel等人提供的CLIP对比学习训练代码[OpenCLIP](https://github.com/mlfoundations/open_clip)
