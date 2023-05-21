@@ -94,7 +94,7 @@ The tree below illustrates the organization of this project.
 补充一个对Prompt的要求，对于缺少类型的，Prompt构造为：
 "{prefix} 颜色+品牌+{Prompt-Type}"
 对于缺少颜色和品牌的，不必要去zero-shot品牌，Prompt构造为：
-"{prefix} {Prompt-Color}+Type"<br/>
+"{prefix} {Prompt-Color}+Type"
 此处{prefix}是指label原先的前缀
 
 ### 数据分布差异大
