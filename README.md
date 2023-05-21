@@ -92,9 +92,10 @@ The tree below illustrates the organization of this project.
 - 品牌：实测大模型对于品牌这种细分类的效果很不好，不进行数据增强
 **Prompt 构造**
 补充一个对Prompt的要求，对于缺少类型的，Prompt构造为：
-”an image of 颜色+品牌+{Prompt-Type}"
+"{prefix} 颜色+品牌+{Prompt-Type}"<br/>
 对于缺少颜色和品牌的，不必要去zero-shot品牌，Prompt构造为：
-"an imag of {Prompt-Color}+Type"
+"{prefix} {Prompt-Color}+Type"<br/>
+此处{prefix}是指label原先的前缀
 
 ### 数据分布差异大
 1. 训练集与测试集车辆图像分布差异较大，导致测试集上的精度提升无异于测试集精度提升，使用小学习率 4e-7，只微调5个epoch
