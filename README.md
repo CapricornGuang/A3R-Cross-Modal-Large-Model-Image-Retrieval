@@ -15,7 +15,7 @@ Homepage: [CVPR2023 Workshop on Foundation Model](https://foundation-model.com/)
 # 复现
 Tip: 由于赛后资料整理时改变了Infer代码的执行逻辑，可能复现结果会有微小差异
 ## 赛制审核
-1. 可一键复现的Pytorch算法代码：notebook-reproduce.ipynb提供了用于复现的一键运行Jupyter Notebook, notebook-quick-review.ipynb提供了用于快速得到最优结果文件的Jupyter Notebook,notebook-quick-review-last.ipynb提供了用于快速得到最后一次提交的结果文件的Jupyter Notebook
+1. 可一键复现的 Pytorch 算法代码：notebook-reproduce.ipynb提供了用于复现的一键运行Jupyter Notebook, notebook-quick-review.ipynb提供了用于快速得到最优结果文件的Jupyter Notebook,notebook-quick-review-last.ipynb提供了用于快速得到最后一次提交的结果文件的Jupyter Notebook
 2. 提交模型文件对应的checkpoint：日志保存在best-result-review中，模型需要另外下载
    下载链接：https://pan.baidu.com/s/17P6nzWl9PnVH42DFQsCd_w 提取码：067e
 3. 代码内容说明：在notebook-reproduce.ipynb与notebook-reproduce.ipynb中提供了详细说明
@@ -85,21 +85,23 @@ The tree below illustrates the organization of this project.
 考虑到车与人之间的图片大小比例区别较大，因此将车与人的图片都Padding为正方向（填充0），然后resize到224
 
 ### 零样本数据增强
-**分析**
+**(a) 分析**
+
 使用ViT-G-14针对汽车样本进行零样本数据增强，从颜色、品牌、车型三个方面进行数据讨论
 - 颜色：ViT-G-14对于颜色的识别具有很强的鲁棒性，可以进行数据增强
 - 车型：ViT-G-14的对比学习版本在互联网数据上进行训练，互联网对车型这种大类的数据很充分，可以进行数据增强
 - 品牌：实测大模型对于品牌这种细分类的效果很不好，不进行数据增强
-**Prompt 构造**
-补充一个对Prompt的要求，对于缺少类型的，Prompt构造为：
-"{prefix} 颜色+品牌+{Prompt-Type}"
-对于缺少颜色和品牌的，不必要去zero-shot品牌，Prompt构造为：
-"{prefix} {Prompt-Color}+Type"
-此处{prefix}是指label中文本描述原先的前缀
+
+**(b) Prompt 构造**
+
+Prompt 的构造要求如下：
+- 对于缺少类型的，Prompt构造为："{prefix} + 颜色 + 品牌 + {Prompt-Type}"
+- 对于缺少颜色和品牌的，不必要去zero-shot品牌，Prompt构造为： "{prefix} + {Prompt-Color} + Type"
+此处 {prefix} 是指属性文本 label 中原先的自带前缀
 
 ### 数据分布差异大
 1. 训练集与测试集车辆图像分布差异较大，导致测试集上的精度提升无异于测试集精度提升，使用小学习率 4e-7，只微调5个epoch
-2. 训练集是网络数据集，测试集是监控数据集，本质上是属于跨域问题，在Query的时候做了一个Prompt 增强，也即对于汽车的数据+"image taken by traffic surveillance cameras"。
+2. 训练集是网络数据集，测试集是监控数据集，本质上是属于跨域问题，在 Query 的时候做了一个 Prompt 增强，也即对于汽车的数据 + "image taken by traffic surveillance cameras"。
 
 # Acknowlegements
-感谢由Ilharco, Gabriel等人提供的CLIP对比学习训练代码[OpenCLIP](https://github.com/mlfoundations/open_clip)
+感谢由 Ilharco, Gabriel 等人提供的 CLIP 对比学习训练代码 [OpenCLIP](https://github.com/mlfoundations/open_clip)
