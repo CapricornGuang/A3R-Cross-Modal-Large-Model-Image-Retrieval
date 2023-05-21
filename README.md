@@ -92,7 +92,7 @@ The tree below illustrates the organization of this project.
 - 品牌：实测大模型对于品牌这种细分类的效果很不好，不进行数据增强
 **Prompt 构造**
 补充一个对Prompt的要求，对于缺少类型的，Prompt构造为：
-"{prefix} 颜色+品牌+{Prompt-Type}"<br/>
+"{prefix} 颜色+品牌+{Prompt-Type}"
 对于缺少颜色和品牌的，不必要去zero-shot品牌，Prompt构造为：
 "{prefix} {Prompt-Color}+Type"<br/>
 此处{prefix}是指label原先的前缀
