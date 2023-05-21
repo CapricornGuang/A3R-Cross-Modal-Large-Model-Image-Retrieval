@@ -23,10 +23,10 @@ Tip: 由于赛后资料整理时改变了Infer代码的执行逻辑，可能复�
    （1）完整算法结构框图、思路步骤详述、代码组织结构介绍：见如下介绍
    （2）数据增强/清洗策略：见如下介绍
    （3）调参优化策略（若多次迭代，还需说明迭代的具体策略）：见如下介绍
-   （4）训练脚本/代码，最好包含训练一个epoch的运行日志: 在"可一键复现的Pytorch算法代码, notebook-reproduce.ipynb"部分提供. best-result-review提供了得到A榜最好训练结果的运行日志。
-   （5）测试脚本/代码，必须包含评估得到最终精度的运行日志: 在"可一键复现的Pytorch算法代码, notebook-quick-review*.ipynb"部分提供，其中notebook-quick-review表示最优的提交结果，notebook-quick-review-last表示最后一次提交结果
+   （4）训练脚本/代码，最好包含训练一个 epoch 的运行日志: 在"可一键复现的 Pytorch 算法代码, ```notebook-reproduce.ipynb```"部分提供. best-result-review 提供了得到 A 榜最好训练结果的运行日志。
+   （5）测试脚本/代码，必须包含评估得到最终精度的运行日志: 在"可一键复现的 Pytorch 算法代码, ```notebook-quick-review*.ipynb```"部分提供，其中 notebook-quick-review 表示最优的提交结果，notebook-quick-review-last 表示最后一次提交结果
 ## 预下载内容
-1. 模型checkpoint文件: https://pan.baidu.com/s/17P6nzWl9PnVH42DFQsCd_w 提取码：067e
+1. 模型 checkpoint 文件: https://pan.baidu.com/s/17P6nzWl9PnVH42DFQsCd_w 提取码：067e
 2. 数据集文件：https://pan.baidu.com/s/1RXR7q_LAxRusSlamfmoG9A 提取码：tjz2 
 3. 数据增强文件：https://pan.baidu.com/s/1EFiY6dt5v0Na1SgGZByHvw 提取码：922a
 
@@ -68,7 +68,7 @@ The tree below illustrates the organization of this project.
 ```
 
 ## 模型设计
-本比赛主要利用CLIP方法进行多模态对比学习训练, 整体的训练思路如下：
+本比赛主要利用 CLIP 方法进行多模态对比学习训练, 整体的训练思路如下：
 <p align="center">
 <img src="framework.png" height = "240" alt="" align=center />
 <br><br>
@@ -79,17 +79,17 @@ The tree below illustrates the organization of this project.
 以下描述的均是能够提高A榜单得分的策略
 ### 模型选择
 大模型内部存在大量的隐式知识，模型的网络通路也具备更强的鲁棒性。在本项目发现大模型对于光照具有很好的鲁棒性，具备很好的白平衡能力
-选取ViT-G-14大模型作为主干网络
+选取 ViT-G-14 大模型作为主干网络
 
 ### 图像样本大小平衡
-考虑到车与人之间的图片大小比例区别较大，因此将车与人的图片都Padding为正方向（填充0），然后resize到224
+考虑到车与人之间的图片大小比例区别较大，因此将车与人的图片都 Padding 为正方向（填充0），然后 resize 到 224
 
 ### 零样本数据增强
 **(a) 分析**
 
-使用ViT-G-14针对汽车样本进行零样本数据增强，从颜色、品牌、车型三个方面进行数据讨论
-- 颜色：ViT-G-14对于颜色的识别具有很强的鲁棒性，可以进行数据增强
-- 车型：ViT-G-14的对比学习版本在互联网数据上进行训练，互联网对车型这种大类的数据很充分，可以进行数据增强
+使用 ViT-G-14 针对汽车样本进行零样本数据增强，从颜色、品牌、车型三个方面进行数据讨论
+- 颜色：ViT-G-14 对于颜色的识别具有很强的鲁棒性，可以进行数据增强
+- 车型：ViT-G-14 的对比学习版本在互联网数据上进行训练，互联网对车型这种大类的数据很充分，可以进行数据增强
 - 品牌：实测大模型对于品牌这种细分类的效果很不好，不进行数据增强
 
 **(b) Prompt 构造**
@@ -101,7 +101,7 @@ Prompt 的构造要求如下：
 此处 {prefix} 是指属性文本 label 中原先的自带前缀
 
 ### 数据分布差异大
-1. 训练集与测试集车辆图像分布差异较大，导致测试集上的精度提升无异于测试集精度提升，使用小学习率 4e-7，只微调5个epoch
+1. 训练集与测试集车辆图像分布差异较大，导致测试集上的精度提升无异于测试集精度提升，使用小学习率 $4e-7$，只微调 5 个 epoch
 2. 训练集是网络数据集，测试集是监控数据集，本质上是属于跨域问题，在 Query 的时候做了一个 Prompt 增强，也即对于汽车的数据 + "image taken by traffic surveillance cameras"。
 
 # Acknowlegements
