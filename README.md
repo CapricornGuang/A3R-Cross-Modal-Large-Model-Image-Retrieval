@@ -15,10 +15,10 @@ Homepage: [CVPR2023 Workshop on Foundation Model](https://foundation-model.com/)
 # 复现
 Tip: 由于赛后资料整理时改变了Infer代码的执行逻辑，可能复现结果会有微小差异
 ## 赛制审核
-1. 可一键复现的 Pytorch 算法代码：notebook-reproduce.ipynb提供了用于复现的一键运行Jupyter Notebook, notebook-quick-review.ipynb提供了用于快速得到最优结果文件的Jupyter Notebook,notebook-quick-review-last.ipynb提供了用于快速得到最后一次提交的结果文件的Jupyter Notebook
-2. 提交模型文件对应的checkpoint：日志保存在best-result-review中，模型需要另外下载
+1. 可一键复现的 Pytorch 算法代码：```notebook-reproduce.ipynb``` 提供了用于复现的一键运行 Jupyter Notebook, ```notebook-quick-review.ipynb``` 提供了用于快速得到最优结果文件的 Jupyter Notebook, ```notebook-quick-review-last.ipynb``` 提供了用于快速得到最后一次提交的结果文件的 Jupyter Notebook
+2. 提交模型文件对应的 checkpoint：日志保存在 best-result-review 中，模型需要另外下载
    下载链接：https://pan.baidu.com/s/17P6nzWl9PnVH42DFQsCd_w 提取码：067e
-3. 代码内容说明：在notebook-reproduce.ipynb与notebook-reproduce.ipynb中提供了详细说明
+3. 代码内容说明：在 ```notebook-reproduce.ipynb``` 与 ```notebook-reproduce.ipynb``` 中提供了详细说明
 4. 模型构建思路
    （1）完整算法结构框图、思路步骤详述、代码组织结构介绍：见如下介绍
    （2）数据增强/清洗策略：见如下介绍
@@ -97,6 +97,7 @@ The tree below illustrates the organization of this project.
 Prompt 的构造要求如下：
 - 对于缺少类型的，Prompt构造为："{prefix} + 颜色 + 品牌 + {Prompt-Type}"
 - 对于缺少颜色和品牌的，不必要去zero-shot品牌，Prompt构造为： "{prefix} + {Prompt-Color} + Type"
+
 此处 {prefix} 是指属性文本 label 中原先的自带前缀
 
 ### 数据分布差异大
