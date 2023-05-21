@@ -20,11 +20,17 @@ Tip: 由于赛后资料整理时改变了Infer代码的执行逻辑，可能复�
    下载链接：https://pan.baidu.com/s/17P6nzWl9PnVH42DFQsCd_w 提取码：067e
 3. 代码内容说明：在 ```notebook-reproduce.ipynb``` 与 ```notebook-reproduce.ipynb``` 中提供了详细说明
 4. 模型构建思路
+
    （1）完整算法结构框图、思路步骤详述、代码组织结构介绍：见如下介绍
+
    （2）数据增强/清洗策略：见如下介绍
+
    （3）调参优化策略（若多次迭代，还需说明迭代的具体策略）：见如下介绍
-   （4）训练脚本/代码，最好包含训练一个 epoch 的运行日志: 在"可一键复现的 Pytorch 算法代码, ```notebook-reproduce.ipynb```"部分提供. best-result-review 提供了得到 A 榜最好训练结果的运行日志。
+
+   （4）训练脚本/代码，最好包含训练一个 epoch 的运行日志: 在"可一键复现的 Pytorch 算法代码, ```notebook-reproduce.ipynb```"部分提供. best-result-review 提供了得到 A 榜最好训练结果的运行日志
+
    （5）测试脚本/代码，必须包含评估得到最终精度的运行日志: 在"可一键复现的 Pytorch 算法代码, ```notebook-quick-review*.ipynb```"部分提供，其中 notebook-quick-review 表示最优的提交结果，notebook-quick-review-last 表示最后一次提交结果
+
 ## 预下载内容
 1. 模型 checkpoint 文件: https://pan.baidu.com/s/17P6nzWl9PnVH42DFQsCd_w 提取码：067e
 2. 数据集文件：https://pan.baidu.com/s/1RXR7q_LAxRusSlamfmoG9A 提取码：tjz2 
@@ -101,7 +107,7 @@ Prompt 的构造要求如下：
 此处 {prefix} 是指属性文本 label 中原先的自带前缀
 
 ### 数据分布差异大
-1. 训练集与测试集车辆图像分布差异较大，导致测试集上的精度提升无异于测试集精度提升，使用小学习率 $4e-7$，只微调 5 个 epoch
+1. 训练集与测试集车辆图像分布差异较大，导致测试集上的精度提升无异于测试集精度提升，使用小学习率 $4e-7$，只微调 5 个 epoch。
 2. 训练集是网络数据集，测试集是监控数据集，本质上是属于跨域问题，在 Query 的时候做了一个 Prompt 增强，也即对于汽车的数据 + "image taken by traffic surveillance cameras"。
 
 # Acknowlegements
