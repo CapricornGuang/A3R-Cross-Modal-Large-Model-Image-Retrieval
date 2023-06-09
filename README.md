@@ -1,10 +1,9 @@
-# 跨模态大模型图像检索比赛第6名解决方案
+# [跨模态大模型图像检索比赛](https://foundation-model.com/)-第6名解决方案
 ![PyTorch 1.12.1](https://img.shields.io/badge/PyTorch-1.12.1-green?style=plastic)
 ![OpenClipTorch 2.17.1](https://img.shields.io/badge/OpenClipTorch-2.17.1-orange?style=plastic)
 ![CVPR 2023](https://img.shields.io/badge/CVPR-2023-red?style=plastic)
 
 
-Homepage: [CVPR2023 Workshop on Foundation Model](https://foundation-model.com/)
 
 # 1 比赛简介
 
