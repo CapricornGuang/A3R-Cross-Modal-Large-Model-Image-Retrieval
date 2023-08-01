@@ -1,5 +1,5 @@
 <p>
-	<a href="./README_ch.md">[CN-version]</a>
+	<a href="./README-ch.md">[CN-version]</a>
 </p>
 
 # Cross-Modal Large Model Image Retrieval Competition
